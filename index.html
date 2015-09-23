@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>Test</title>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+ <style>
+	body {
+		padding: 0;
+		margin: 0;
+	}
+	html, body, #map {
+		height: 100%;
+	}
+</style>
+
+</head>
+
+<body>
+  	<div id="map" style="height: 400px"></div>
+	<div id="output"></div>
+	
+<script>
+// Load OpenCycleMap as tile baselayer
+  var OpenCycleMap = L.tileLayer('http://b.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
+		maxZoom: 18,
+		attribution: 'Data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Routing <a href="http://project-osrm.org/">OSRM</a>, ' +
+			'Map &copy; <a href="http://www.thunderforest.com/">OpenCycleMap</a>',
+	});	
+	
+// Add map
+  var map = L.map('map', {
+  layers: OpenCycleMap}).setView([51.505, -0.09], 15);
+  
+	
+// Ajax call xml file
+$(document).ready(function()
+{
+	$.ajax({
+		type: "GET",
+		url: "https://tfl.gov.uk/cdn/static/cms/documents/barclays-cycle-hire-availability-example.xml",
+		dataType: "xml",
+		success: parseXml
+	});
+});
+
+function parseXml(xml)
+{
+	$(xml).find("station").each(function()
+	{
+		$("#output").append("* " + $(this).find("name").text() + "<br />");
+		marker = L.marker([$(this).find("lat").text(), $(this).find("long").text()]).addTo(map);
+		marker.bindPopup($(this).find("name").text());
+	});
+}
+
+</script>  
+
+</body>
+</html>

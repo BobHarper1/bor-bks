@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stations lastUpdate="1303824571047" version="2.0">
+	<station>
+		<id>1</id> 
+		<name>River Street, Clerkenwell</name> 
+		<terminalName>001023</terminalName> 
+		<lat>51.52916347</lat> 
+		<long>-0.109970527</long> 
+		<installed>true</installed> 
+		<locked>false</locked> 
+		<installDate>1278947280000</installDate> 
+		<removalDate/> 
+		<temporary>false</temporary> 
+		<nbBikes>4</nbBikes> 
+		<nbEmptyDocks>15</nbEmptyDocks> 
+		<nbDocks>19</nbDocks> 
+	</station>
+	<station>
+		<id>2</id> 
+		<name>Phillimore Gardens, Kensington</name> 
+		<terminalName>001018</terminalName> 
+		<lat>51.49960695</lat> 
+		<long>-0.197574246</long> 
+		<installed>true</installed> 
+		<locked>false</locked> 
+		<installDate>1278585780000</installDate> 
+		<removalDate/> 
+		<temporary>false</temporary> 
+		<nbBikes>0</nbBikes> 
+		<nbEmptyDocks>36</nbEmptyDocks> 
+		<nbDocks>37</nbDocks> 
+	</station>
+</stations>
