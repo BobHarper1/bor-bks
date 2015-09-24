@@ -39,6 +39,19 @@
   var map = L.map('map', {
   layers: OpenCycleMap}).setView([51.505, -0.09], 15);
   
+  var noIcon = L.icon({
+    iconUrl: 'pngs/bike0.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+	});
+	
+  var yesIcon = L.icon({
+    iconUrl: 'pngs/bike1.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+	});
 	
 // Ajax call xml file
 $(document).ready(function()
@@ -56,12 +69,11 @@ function parseXml(xml)
 	$(xml).find("station").each(function()
 	{
 		$("#output").append("* " + $(this).find("name").text() + "<br />");
-		marker = L.marker([$(this).find("lat").text(), $(this).find("long").text()]).addTo(map);
-		marker.bindPopup($(this).find("name").text());
+		marker = L.marker([$(this).find("lat").text(), $(this).find("long").text()]}).addTo(map);
+		marker.bindPopup($(this).find("name").text() + "Bikes:" + $(this).find("nbBikes").text());
 	});
 }
 
 </script>  
-
 </body>
 </html>
