@@ -69,7 +69,7 @@ function parseXml(xml)
 	$(xml).find("station").each(function()
 	{
 		$("#output").append("* " + $(this).find("name").text() + "<br />");
-		marker = L.marker([$(this).find("lat").text(), $(this).find("long").text()]}).addTo(map);
+		marker = L.marker([$(this).find("lat").text(), $(this).find("long").text()]).addTo(map);
 		marker.bindPopup($(this).find("name").text() + "Bikes:" + $(this).find("nbBikes").text());
 	});
 }
